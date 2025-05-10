@@ -8,7 +8,7 @@ class DashBoard(QMainWindow):
         super().__init__()
         self.role = role
         self.setWindowTitle(f"Student Management System - {role.capitalize()} Panel")
-        self.setMinimumSize(1000, 800)
+        self.setMinimumSize(1200, 900)
         self.setWindowIcon(QIcon("icon.jpg"))  # Add your icon file
         self.setup_ui()
         
