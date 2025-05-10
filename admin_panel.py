@@ -9,7 +9,7 @@ class AdminPanel(QWidget):
     def __init__(self):
         super().__init__()
         self.setup_ui()
-        self.resize(1000, 700)
+        self.resize(1200, 900)
         self.load_users()
         
     def setup_ui(self):
