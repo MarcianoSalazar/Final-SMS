@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QPushButton, 
                            QVBoxLayout, QHBoxLayout, QMessageBox, QFormLayout, 
                            QLineEdit, QDateEdit, QComboBox, QHeaderView,
-                           QLabel, QGroupBox, QFrame, QGridLayout)
+                           QLabel, QGroupBox, QFrame)
 from PyQt5.QtCore import Qt, QDate
 from backend import (add_student, get_students, search_students, 
                     update_student, delete_student)
@@ -13,7 +13,7 @@ class StudentPanel(QWidget):
         self.setup_ui()
         self.load_students()
         self.setWindowTitle("Student Management System")
-        self.resize(1200, 800)
+        self.resize(1200, 900)
         
     def setup_ui(self):
         main_layout = QVBoxLayout()
@@ -78,7 +78,7 @@ class StudentPanel(QWidget):
             field.setMinimumWidth(250)
             field.setStyleSheet("""
                 QLineEdit {
-                    padding: 8px;
+                    padding: 10px;
                     border: 1px solid #a8c7a5;
                     border-radius: 4px;
                 }
@@ -87,7 +87,7 @@ class StudentPanel(QWidget):
         self.dob.setMinimumWidth(250)
         self.dob.setStyleSheet("""
             QDateEdit {
-                padding: 6px;
+                padding: 10px;
                 border: 1px solid #a8c7a5;
                 border-radius: 4px;
             }
@@ -96,7 +96,7 @@ class StudentPanel(QWidget):
         self.gender.setMinimumWidth(250)
         self.gender.setStyleSheet("""
             QComboBox {
-                padding: 6px;
+                padding: 10px;
                 border: 1px solid #a8c7a5;
                 border-radius: 4px;
             }
