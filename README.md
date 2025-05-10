@@ -54,11 +54,11 @@ The **Student Management System (SMS)** is a desktop-based application built wit
 ## How It Works
 
 ### Login Phase
-- `LoginWindow` authenticates users using `sms_backend.authenticate()`
-- On successful login, launches `MainWindow` based on user role
+- `LoginWindow` authenticates users using `backend.authenticate()`
+- On successful login, launches `DashBoard` based on user role
 
 ### Dashboard Routing
-- `MainWindow` displays:
+- `DashBoard` displays:
   - **Student Panel** for all users
   - **Admin Panel** only for admin users
 
