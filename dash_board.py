@@ -13,25 +13,20 @@ class DashBoard(QMainWindow):
         self.setup_ui()
         
     def setup_ui(self):
-        # Create tabs
         self.tabs = QTabWidget()
         
-        # Always add student panel
         self.student_panel = StudentPanel(self.role)
         self.tabs.addTab(self.student_panel, "Student Management")
         
-        # Add admin panel if user is admin
         if self.role == 'admin':
             self.admin_panel = AdminPanel()
             self.tabs.addTab(self.admin_panel, "User Management")
         
         self.setCentralWidget(self.tabs)
         
-        # Status bar
         self.statusBar().showMessage(f"Logged in as {self.role}")
         
-        
-        # Style
+       
         self.setStyleSheet("""
             QMainWindow {
                 background-color: #f5f5f5;
