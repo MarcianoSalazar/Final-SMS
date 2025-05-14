@@ -160,7 +160,7 @@ class StudentPanel(QWidget):
         form_group_layout.addLayout(btn_layout)
         form_group.setLayout(form_group_layout)
 
-        # Search section
+        # Search part
         search_group = QGroupBox("Search Students")
         search_group.setStyleSheet(form_group.styleSheet())
         search_group.setMaximumWidth(600)
