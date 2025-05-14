@@ -53,6 +53,6 @@ class DashBoard(QMainWindow):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
-    window = DashBoard("admin")  # For testing
+    window = DashBoard("admin")
     window.show()
     app.exec_()
