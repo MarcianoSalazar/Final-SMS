@@ -3,11 +3,9 @@ from hashlib import sha256
 from typing import List, Tuple, Optional
 
 def init_db():
-    """Initialize the database with required tables"""
     con = sqlite3.connect("school.db")
     cur = con.cursor()
     
-    # Updated students table structure
     cur.execute("""CREATE TABLE IF NOT EXISTS students (
                 id INTEGER PRIMARY KEY,
                 std_id TEXT UNIQUE, 
@@ -16,16 +14,14 @@ def init_db():
                 section TEXT,
                 dob TEXT,
                 gender TEXT,
-                mobile TEXT)""")  # Removed age, added course/section
+                mobile TEXT)""")
     
-    # Users table remains unchanged
     cur.execute("""CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY,
                 username TEXT UNIQUE NOT NULL,
                 password TEXT NOT NULL,
                 role TEXT NOT NULL CHECK(role IN ('admin', 'user')))""")
     
-    # Create default admin if not exists
     cur.execute("SELECT COUNT(*) FROM users WHERE username='admin'")
     if cur.fetchone()[0] == 0:
         hashed = sha256("admin123".encode()).hexdigest()
@@ -108,7 +104,6 @@ def get_students() -> List[Tuple]:
     con.close()
     return students
 
-# Updated search to include new fields
 def search_students(**kwargs) -> List[Tuple]:
     """Search students with flexible criteria using new fields"""
     con = sqlite3.connect("school.db")
@@ -154,7 +149,6 @@ def update_student(student_id: int, **kwargs) -> bool:
     finally:
         con.close()
 
-# Delete function remains unchanged
 def delete_student(student_id: int) -> bool:
     """Delete a student record"""
     con = sqlite3.connect("school.db")
@@ -166,5 +160,4 @@ def delete_student(student_id: int) -> bool:
     finally:
         con.close()
 
-# Initialize the database with new structure
 init_db()
