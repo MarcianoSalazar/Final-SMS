@@ -28,12 +28,12 @@ class LoginWindow(QWidget):
 
         self.label_username = QLabel("Username:")
         self.label_password = QLabel("Password:")
+
         self.label_username.setStyleSheet("QLabel { font-size: 15px; font-weight: bold; color: #26425a; }")
         self.label_password.setStyleSheet("QLabel { font-size: 15px; font-weight: bold; color: #26425a; }")
 
         self.username = QLineEdit()
         self.username.setPlaceholderText("Username")
-
         self.username.setStyleSheet("QLineEdit { font-size: 17px; padding: 15px; }")
     
         self.password = QLineEdit()
@@ -92,6 +92,6 @@ class LoginWindow(QWidget):
 if __name__ == "__main__":
     app = QApplication([])
     window = LoginWindow()
-    window.setStyleSheet("QWidget { background-color: #ffff}")
+    window.setStyleSheet("QWidget { background-color: #ffff }")
     window.show()
     app.exec_()

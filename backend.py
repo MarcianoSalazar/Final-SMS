@@ -32,7 +32,7 @@ def init_db():
     con.close()
 
 # ===== User Management =====
-def add_user(username: str, password: str, role: str) -> bool:
+def add_user(username, password, role):
     """Add a new user to the system"""
     con = sqlite3.connect("school.db")
     cur = con.cursor()
@@ -108,7 +108,6 @@ def search_students(**kwargs) -> List[Tuple]:
     """Search students with flexible criteria using new fields"""
     con = sqlite3.connect("school.db")
     cur = con.cursor()
-    
     conditions = []
     params = []
     valid_fields = ['std_id', 'fullname', 'course', 'section', 'dob', 'gender', 'mobile']
@@ -127,7 +126,7 @@ def search_students(**kwargs) -> List[Tuple]:
     con.close()
     return results
 
-def update_student(student_id: int, **kwargs) -> bool:
+def update_student(student_id: int, **kwargs):
     """Update a student record with new fields"""
     valid_fields = ['std_id', 'fullname', 'course', 'section', 'dob', 'gender', 'mobile']
     updates = {k: v for k, v in kwargs.items() if k in valid_fields and v is not None}
@@ -149,7 +148,7 @@ def update_student(student_id: int, **kwargs) -> bool:
     finally:
         con.close()
 
-def delete_student(student_id: int) -> bool:
+def delete_student(student_id: int):
     """Delete a student record"""
     con = sqlite3.connect("school.db")
     cur = con.cursor()

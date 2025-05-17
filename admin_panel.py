@@ -115,7 +115,7 @@ class AdminPanel(QWidget):
         self.user_table.setStyleSheet("""
             QTableWidget {
                 background-color: white;
-                border: 1px solid #a8c7a5;
+                border: 2px solid #a8c7a5;
                 border-radius: 5px;
             }
             QHeaderView::section {

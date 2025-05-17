@@ -22,7 +22,7 @@ class StudentPanel(QWidget):
         main_layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
 
         # Title
-        title = QLabel("Student Management")
+        title = QLabel("Student Management System")
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("""
             QLabel {
