@@ -6,8 +6,7 @@ def main():
     app = QApplication(sys.argv)
     
     app.setStyle("Fusion")
-    
-    # Create and show login window
+
     login = LoginWindow()
     login.show()
     

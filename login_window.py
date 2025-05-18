@@ -9,7 +9,7 @@ class LoginWindow(QWidget):
         super().__init__()
         self.setWindowTitle("Student Management System - Login")
         self.setWindowIcon(QIcon("icon.jpg"))
-        self.resize(550, 400)
+        self.resize(, 400)
         self.setup_ui()
     
     def setup_ui(self):
