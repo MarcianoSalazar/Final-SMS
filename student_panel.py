@@ -60,7 +60,7 @@ class StudentPanel(QWidget):
         form_layout.setLabelAlignment(Qt.AlignRight)
         form_layout.setFormAlignment(Qt.AlignHCenter)
         form_layout.setVerticalSpacing(12)
-        form_layout.setContentsMargins(110, 35, 110, 20)
+        form_layout.setContentsMargins(35, 35, 35, 20)
 
         # Fields
         self.std_id = QLineEdit()
@@ -78,6 +78,7 @@ class StudentPanel(QWidget):
             field.setMinimumWidth(250)
             field.setStyleSheet("""
                 QLineEdit {
+                    font-size: 14px;
                     padding: 10px;
                     border: 1px solid #a8c7a5;
                     border-radius: 4px;
