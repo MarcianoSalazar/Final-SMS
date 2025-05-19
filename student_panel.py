@@ -33,13 +33,13 @@ class StudentPanel(QWidget):
             }
         """)
 
-        # Center container
+        # Center container for form and search parts
         center_container = QWidget()
         center_layout = QVBoxLayout()
         center_layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         center_container.setLayout(center_layout)
 
-        # Form group
+        # Form group (keep fixed size)
         form_group = QGroupBox("Student Information")
         form_group.setStyleSheet("""
             QGroupBox {
@@ -111,7 +111,7 @@ class StudentPanel(QWidget):
         form_layout.addRow("Gender:", self.gender)
         form_layout.addRow("Mobile:", self.mobile)
 
-        # Buttons layout
+        # Buttons layout inside form group
         btn_layout = QHBoxLayout()
         btn_layout.setAlignment(Qt.AlignCenter)
         btn_layout.setSpacing(20)
@@ -154,16 +154,20 @@ class StudentPanel(QWidget):
         btn_layout.addWidget(self.add_btn)
         btn_layout.addWidget(self.clear_btn)
 
-        # Finalize form
+        # Finalize form group
         form_group_layout = QVBoxLayout()
         form_group_layout.addLayout(form_layout)
         form_group_layout.addLayout(btn_layout)
         form_group.setLayout(form_group_layout)
+        # Fix the form group size (use sizeHint or explicit dimensions)
+        form_group.setFixedWidth(1000)
+        # Optionally, set a fixed height:
 
-        # Search part
+
+        # Search part with fixed width as well
         search_group = QGroupBox("Search Students")
         search_group.setStyleSheet(form_group.styleSheet())
-        search_group.setMaximumWidth(600)
+        search_group.setFixedWidth(1000)
 
         search_layout = QHBoxLayout()
         search_layout.setContentsMargins(15, 15, 15, 15)
@@ -198,7 +202,17 @@ class StudentPanel(QWidget):
         search_layout.addWidget(self.search_btn)
         search_group.setLayout(search_layout)
 
-        # Student Table
+        # Assemble the center container (form group and search group)
+        center_layout.addWidget(form_group)
+        center_layout.addWidget(search_group)
+
+        # Separator line
+        separator = QFrame()
+        separator.setFrameShape(QFrame.HLine)
+        separator.setFrameShadow(QFrame.Sunken)
+        separator.setStyleSheet("color: #a8c7a5;")
+
+        # Student Table (expands to fill the rest)
         self.student_table = QTableWidget()
         self.student_table.setColumnCount(9)
         self.student_table.setHorizontalHeaderLabels(
@@ -225,25 +239,16 @@ class StudentPanel(QWidget):
             }
         """)
 
-        # Assemble layouts
-        center_layout.addWidget(form_group)
-        center_layout.addWidget(search_group)
-
-        separator = QFrame()
-        separator.setFrameShape(QFrame.HLine)
-        separator.setFrameShadow(QFrame.Sunken)
-        separator.setStyleSheet("color: #a8c7a5;")
-
-        main_layout.addWidget(title)
-        main_layout.addWidget(center_container)
-        main_layout.addWidget(separator)
-        main_layout.addWidget(self.student_table)
+        # Final main layout assembly
+        main_layout.addWidget(title, 0)
+        main_layout.addWidget(center_container, 0)
+        main_layout.addWidget(separator, 0)
+        main_layout.addWidget(self.student_table, 1)  # Use stretch to expand the table
 
         self.setLayout(main_layout)
 
         if self.role != 'admin':
             self.disable_form()
-
     
     def disable_form(self):
         """Disable form fields for regular users"""
@@ -481,5 +486,6 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     window = StudentPanel("admin")
-    window.show()
+    window.setWindowFlags(Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
+    window.showMaximized()
     app.exec_()

@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QMainWindow, QTabWidget
+from PyQt5.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from admin_panel import AdminPanel
 from student_panel import StudentPanel
+from PyQt5.QtCore import Qt
 
 class DashBoard(QMainWindow):
     def __init__(self, role):
@@ -22,11 +23,23 @@ class DashBoard(QMainWindow):
             self.admin_panel = AdminPanel()
             self.tabs.addTab(self.admin_panel, "User Management")
         
-        self.setCentralWidget(self.tabs)
+        # Instead of wrapping the tabs in a fixed-size container,
+        # use a container that expands to fill the available space.
+        container = QWidget()
+        container_layout = QVBoxLayout(container)
+        container_layout.setContentsMargins(0, 0, 0, 0)
+        container_layout.addWidget(self.tabs)
+        
+        # Create the central widget for the QMainWindow
+        central_widget = QWidget()
+        central_layout = QVBoxLayout(central_widget)
+        central_layout.setContentsMargins(0, 0, 0, 0)
+        central_layout.addWidget(container)
+        
+        self.setCentralWidget(central_widget)
         
         self.statusBar().showMessage(f"Logged in as {self.role}")
         
-       
         self.setStyleSheet("""
             QMainWindow {
                 background-color: #f5f5f5;
@@ -49,10 +62,10 @@ class DashBoard(QMainWindow):
                 margin-bottom: -1px;
             }
         """)
-
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     window = DashBoard("admin")
-    window.show()
+    window.setWindowFlags(Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
+    window.showMaximized()
     app.exec_()
