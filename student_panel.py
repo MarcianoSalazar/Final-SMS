@@ -70,7 +70,7 @@ class StudentPanel(QWidget):
         self.dob = QDateEdit(calendarPopup=True)
         self.dob.setDate(QDate.currentDate())
         self.gender = QComboBox()
-        self.gender.addItems(["Male", "Female", "Other"])
+        self.gender.addItems(["Male", "Female"])
         self.mobile = QLineEdit()
 
         inputs = [self.std_id, self.fullname, self.course, self.section, self.mobile]
