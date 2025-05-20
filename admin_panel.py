@@ -29,7 +29,6 @@ class AdminPanel(QWidget):
             }
         """)
         
-        # "Add New User" form group (fixed width)
         form_group = QGroupBox("Add New User")
         form_group.setStyleSheet("""
             QGroupBox {
@@ -50,10 +49,9 @@ class AdminPanel(QWidget):
         form_layout = QVBoxLayout()
         form_layout.setSpacing(50)
         
-        # Buttons layout inside the form group
         btn_layout = QHBoxLayout()
         btn_layout.setSpacing(10)
-        btn_layout.setAlignment(Qt.AlignCenter)  # center the button row
+        btn_layout.setAlignment(Qt.AlignCenter)
         
         self.add_btn = QPushButton("Add User")
         self.add_btn.setStyleSheet("""
@@ -100,14 +98,11 @@ class AdminPanel(QWidget):
         form_group.setLayout(form_layout)
         form_group.setFixedWidth(600)
         
-        # Separator
         separator = QFrame()
         separator.setFrameShape(QFrame.HLine)
         separator.setFrameShadow(QFrame.Sunken)
         separator.setStyleSheet("color: #a8c7a5;")
 
-        
-        # User table (expands to fill the rest)
         self.user_table = QTableWidget()
         self.user_table.setColumnCount(4)
         self.user_table.setMaximumSize(1500, 800)
