@@ -17,9 +17,6 @@ class LoginWindow(QWidget):
         outer_layout.setAlignment(Qt.AlignCenter)
         outer_layout.setContentsMargins(10, 10, 10, 10)
 
-       
-        
-        # Container for the login panel with fixed size and styled border
         login_panel = QWidget()
         login_panel.setFixedSize(750, 600)
         login_panel.setStyleSheet("""
@@ -34,7 +31,6 @@ class LoginWindow(QWidget):
         panel_layout.setSpacing(20)
         panel_layout.setContentsMargins(100, 40, 100, 50)
         
-        # Title
         title = QLabel("Student Management System")
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("font-size: 30px; font-weight: bold; color: #375534;")
@@ -58,13 +54,11 @@ class LoginWindow(QWidget):
         self.password.setPlaceholderText("Password")
         self.password.setEchoMode(QLineEdit.Password)
         self.password.setStyleSheet("font-size: 17px; padding: 10px; background-color: #E4F6DA;")
-        
-        # Add rows to the form: label on left and field on right
+
         form_layout.addRow(self.label_username, self.username)
         form_layout.addRow(self.label_password, self.password)
         panel_layout.addLayout(form_layout)
         
-        # Login button centered in its own layout
         login_btn = QPushButton("Login")
         login_btn.setStyleSheet("""
             QPushButton {
@@ -86,7 +80,6 @@ class LoginWindow(QWidget):
         btn_layout.addWidget(login_btn)
         panel_layout.addLayout(btn_layout)
         
-        # Add the fixed-size login panel to the outer layout
         outer_layout.addWidget(login_panel)
     
     def authenticate(self):

@@ -9,7 +9,6 @@ def main():
 
     login = LoginWindow()
     login.showMaximized()  
-
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
