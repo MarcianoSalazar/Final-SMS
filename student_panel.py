@@ -33,13 +33,13 @@ class StudentPanel(QWidget):
             }
         """)
 
-        # Center container for form and search parts
+        # Center container
         center_container = QWidget()
         center_layout = QVBoxLayout()
         center_layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
         center_container.setLayout(center_layout)
 
-        # Form group (keep fixed size)
+        # Form group
         form_group = QGroupBox("Student Information")
         form_group.setStyleSheet("""
             QGroupBox {
@@ -160,12 +160,10 @@ class StudentPanel(QWidget):
         form_group_layout.addLayout(form_layout)
         form_group_layout.addLayout(btn_layout)
         form_group.setLayout(form_group_layout)
-        # Fix the form group size (use sizeHint or explicit dimensions)
         form_group.setFixedWidth(1000)
-        # Optionally, set a fixed height:
 
 
-        # Search part with fixed width as well
+        # Search part
         search_group = QGroupBox("Search Students")
         search_group.setStyleSheet(form_group.styleSheet())
         search_group.setFixedWidth(1000)
@@ -203,7 +201,7 @@ class StudentPanel(QWidget):
         search_layout.addWidget(self.search_btn)
         search_group.setLayout(search_layout)
 
-        # Assemble the center container (form group and search group)
+        # Assemble the center container 
         center_layout.addWidget(form_group)
         center_layout.addWidget(search_group)
 
@@ -213,7 +211,7 @@ class StudentPanel(QWidget):
         separator.setFrameShadow(QFrame.Sunken)
         separator.setStyleSheet("color: #a8c7a5;")
 
-        # Student Table (expands to fill the rest)
+        # Student Table 
         self.student_table = QTableWidget()
         self.student_table.setColumnCount(9)
         self.student_table.setHorizontalHeaderLabels(
@@ -244,8 +242,7 @@ class StudentPanel(QWidget):
         main_layout.addWidget(title, 0)
         main_layout.addWidget(center_container, 0)
         main_layout.addWidget(separator, 0)
-        main_layout.addWidget(self.student_table, 1)  # Use stretch to expand the table
-
+        main_layout.addWidget(self.student_table, 1)
         self.setLayout(main_layout)
 
         if self.role != 'admin':
@@ -327,7 +324,7 @@ class StudentPanel(QWidget):
         gender = self.student_table.item(row, 6).text()
         mobile = self.student_table.item(row, 7).text()
         
-        # Update form fields
+        #form fields
         self.std_id.setText(std_id)
         self.fullname.setText(fullname)
         self.course.setText(course)
@@ -336,7 +333,7 @@ class StudentPanel(QWidget):
         self.gender.setCurrentText(gender)
         self.mobile.setText(mobile)
         
-        # Change button text
+        # button text
         self.add_btn.setText("Update")
         self.add_btn.clicked.disconnect()
         self.add_btn.clicked.connect(lambda: self.update_student(student_id))

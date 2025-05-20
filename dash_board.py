@@ -23,14 +23,11 @@ class DashBoard(QMainWindow):
             self.admin_panel = AdminPanel()
             self.tabs.addTab(self.admin_panel, "User Management")
         
-        # Instead of wrapping the tabs in a fixed-size container,
-        # use a container that expands to fill the available space.
         container = QWidget()
         container_layout = QVBoxLayout(container)
         container_layout.setContentsMargins(0, 0, 0, 0)
         container_layout.addWidget(self.tabs)
         
-        # Create the central widget for the QMainWindow
         central_widget = QWidget()
         central_layout = QVBoxLayout(central_widget)
         central_layout.setContentsMargins(0, 0, 0, 0)
